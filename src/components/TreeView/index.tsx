@@ -63,7 +63,7 @@ export const TreeView: FC = () => {
       transition={{
         duration: 0.5,
         ease: "easeInOut",
-        delay: 3.8,
+        delay: 4.5,
       }}
     >
       <Container>
