@@ -1,0 +1,54 @@
+/*
+  
+  MEDIA QUERY MANAGER
+  0 - 600px:          Phone
+  600px - 900px:      Tablet portrait
+  900px - 1200px:     Tablet landscape
+  [1200px - 1800px]:  Default
+  1800px++:           Big desktop
+  
+  $breakpoint arguments:
+  - phone
+  - tab-port
+  - tab-land
+  - big-desktop
+  
+  1em = 16px
+  
+  */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* DESKTOP */
+html {
+  font-size: 62.5%;
+}
+/* TABLET PORTRAIT */
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+/* TABLET LANDSCAPE */
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Fira Mono", sans-serif;
+  font-weight: 200;
+  background: black !important;
+  color: white !important;
+}
+
+#tsparticles {
+  opacity: 1;
+}

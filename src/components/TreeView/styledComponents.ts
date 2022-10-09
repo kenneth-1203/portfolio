@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { animated } from '@react-spring/web'
+import { transparency } from '../../assets/css/utilities/functions'
+import { colors } from '../../assets/css/utilities/colors'
 
 export const Container = styled('div')`
   width: 100%;
@@ -7,7 +9,7 @@ export const Container = styled('div')`
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 21px;
   --webkit-user-select: none;
   user-select: none;
@@ -35,7 +37,7 @@ export const Content = styled(animated.div)`
   will-change: transform, opacity, height;
   margin-left: 6px;
   padding: 0px 0px 0px 14px;
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid ${transparency(colors.white, 0.4)};
   overflow: hidden;
 `
 
