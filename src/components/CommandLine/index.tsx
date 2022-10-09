@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 import {
   Navbar,
   NavbarName,
@@ -41,16 +40,6 @@ export const CommandLine: FC = () => {
 
   return (
     <Container>
-      {/* <Tilt
-        perspective={1000}
-        tiltMaxAngleX={5}
-        tiltMaxAngleY={5}
-        scale={1.03}
-        transitionSpeed={5000}
-        glareEnable={false}
-        onEnter={() => setHovering(true)}
-        onLeave={() => setHovering(false)}
-      > */}
       <Card parallax layer={1}>
         <motion.div
           animate={{
@@ -96,7 +85,6 @@ export const CommandLine: FC = () => {
           </InnerContainer>
         </motion.div>
       </Card>
-      {/* </Tilt> */}
     </Container>
   );
 };
