@@ -27,9 +27,9 @@ export const config: ISourceOptions = {
     enable: true,
     zIndex: -1,
   },
-  detectRetina: true,
+  detectRetina: false,
   duration: 0,
-  fpsLimit: 60,
+  fpsLimit: 30,
   interactivity: {
     detectsOn: "window",
     events: {
@@ -570,5 +570,5 @@ export const config: ISourceOptions = {
   pauseOnOutsideViewport: true,
   responsive: [],
   themes: [],
-  zLayers: 100,
+  zLayers: 1,
 };
