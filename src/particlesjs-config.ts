@@ -1,10 +1,11 @@
 import type { ISourceOptions } from 'tsparticles-engine';
+import { backgroundColor, greyColor } from './assets/css/utilities/colors';
 
 export const config: ISourceOptions = {
   autoPlay: true,
   background: {
     color: {
-      value: "#000",
+      value: backgroundColor,
     },
     image: "",
     position: "fixed",
@@ -16,7 +17,7 @@ export const config: ISourceOptions = {
     composite: "destination-out",
     cover: {
       color: {
-        value: "#fff",
+        value: greyColor,
       },
       opacity: 1,
     },
@@ -79,17 +80,17 @@ export const config: ISourceOptions = {
         area: {
           gradient: {
             start: {
-              value: "#ffffff",
+              value: greyColor,
             },
             stop: {
-              value: "#000000",
+              value: backgroundColor,
             },
           },
           radius: 1000,
         },
         shadow: {
           color: {
-            value: "#000000",
+            value: backgroundColor,
           },
           length: 2000,
         },
@@ -119,7 +120,7 @@ export const config: ISourceOptions = {
         quantity: 5,
         particles: {
           color: {
-            value: "#FFFFFF",
+            value: greyColor,
             animation: {
               enable: true,
               speed: 200,
@@ -249,7 +250,7 @@ export const config: ISourceOptions = {
       },
     },
     color: {
-      value: "#FFFFFF",
+      value: greyColor,
       animation: {
         h: {
           count: 0,
@@ -331,7 +332,7 @@ export const config: ISourceOptions = {
       shadow: {
         blur: 5,
         color: {
-          value: "#FFFFFF",
+          value: greyColor,
         },
         enable: false,
       },
@@ -397,7 +398,7 @@ export const config: ISourceOptions = {
         enable: false,
         length: 0,
         fillColor: {
-          value: "#000000",
+          value: backgroundColor,
         },
       },
       vibrate: false,
@@ -492,7 +493,7 @@ export const config: ISourceOptions = {
     shadow: {
       blur: 0,
       color: {
-        value: "#000000",
+        value: backgroundColor,
       },
       enable: false,
       offset: {

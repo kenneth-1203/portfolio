@@ -7,6 +7,7 @@ import {
   NavbarItem,
   Container,
   InnerContainer,
+  Contents,
   Wrapper,
   Blinker,
   TypingText,
@@ -37,7 +38,6 @@ const codeSnippets: Array<Code> = [
 
 export const CommandLine: FC = () => {
   const [line, setLine] = useState<number>(3);
-  const [hovering, setHovering] = useState<boolean>(false);
 
   return (
     <Container>
@@ -51,7 +51,7 @@ export const CommandLine: FC = () => {
         onEnter={() => setHovering(true)}
         onLeave={() => setHovering(false)}
       > */}
-      <Card>
+      <Card parallax layer={1}>
         <motion.div
           animate={{
             y: [100, 0],
@@ -65,31 +65,33 @@ export const CommandLine: FC = () => {
         >
           <InnerContainer>
             <Navbar
-              // onMouseOver={() => setHovering(true)}
-              // onMouseLeave={() => setHovering(false)}
+            // onMouseOver={() => setHovering(true)}
+            // onMouseLeave={() => setHovering(false)}
             >
               <NavbarName>portfolio</NavbarName>
               <NavbarItem>✖</NavbarItem>
             </Navbar>
-            <Wrapper hovering={hovering}>
-              {codeSnippets.map((snippet, i) => {
-                return (
-                  <>
-                    <TypingText
-                      key={i}
-                      line={line}
-                      delay={snippet.delay + i / 2}
-                      onClick={() => setLine(i + 1)}
-                      hovering={hovering}
-                    >
-                      {snippet.code}
-                    </TypingText>
-                  </>
-                );
-              })}
-              <Blinker />
-              <LoadingText />
-              <TreeView />
+            <Wrapper>
+              <Card parallax layer={2}>
+                <Contents>
+                  {codeSnippets.map((snippet, i) => {
+                    return (
+                      <Card parallax layer={2} onClick={() => setLine(i + 1)}>
+                        <TypingText
+                          key={i}
+                          delay={snippet.delay + i / 2}
+                          line={line}
+                        >
+                          {snippet.code}
+                        </TypingText>
+                      </Card>
+                    );
+                  })}
+                  <Blinker />
+                  <LoadingText />
+                  <TreeView />
+                </Contents>
+              </Card>
             </Wrapper>
           </InnerContainer>
         </motion.div>

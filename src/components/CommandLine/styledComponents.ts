@@ -27,19 +27,20 @@ export const Container = styled.div`
 
 export const InnerContainer = styled.div`
   transition: 1s;
-  width: 80rem;
+  width: 60rem;
 
   ${tabletPortrait} {
     width: 100%;
   }
 `;
 
-export const Wrapper = styled.div<{ hovering: boolean }>`
+export const Wrapper = styled.div`
   height: 14rem;
   border: 1px solid ${transparency(colors.primary, 0.5)};
   backdrop-filter: blur(3px);
   padding: 2rem;
   transition: border-color 0.2s;
+  background: linear-gradient(150deg, rgba(33,9,65, .2) 50%, rgba(70,59,120, .2) 100%);
 
   animation: ${ExpandAnim("14rem", "284px")} 1s forwards;
   animation-delay: 4s;
@@ -98,7 +99,6 @@ export const Blinker = styled.div`
 export const TypingText = styled.p<{
   delay: number;
   line: number;
-  hovering: boolean;
 }>`
   font-size: 1.4rem;
   height: 1.4rem;
@@ -110,13 +110,7 @@ export const TypingText = styled.p<{
   transition: 1s;
   user-select: none;
 
-  ${({ hovering }) =>
-    hovering &&
-    `
-    transform: scale(1.025);
-  `}
-
-  &:nth-child(${({ line }) => line ?? 3}) {
+  &:nth-child(${({ line }) => line ?? 3}) > p {
     &::after {
       content: "|";
       font-weight: 800;
@@ -143,4 +137,8 @@ export const LoadingText = styled.p`
     content: "";
     animation: ${Loading} 0.4s infinite 3.5s;
   }
+`;
+
+export const Contents = styled.div`
+
 `;
