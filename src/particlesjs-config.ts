@@ -29,7 +29,7 @@ export const config: ISourceOptions = {
   },
   detectRetina: true,
   duration: 0,
-  fpsLimit: 120,
+  fpsLimit: 60,
   interactivity: {
     detectsOn: "window",
     events: {
