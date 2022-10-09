@@ -23,19 +23,19 @@ export const Blink = keyframes`
 
 export const Loading = keyframes`
   0% {
-    content: "-"
+    content: "."
   }
   25% {
-    content: "\""
+    content: ".."
   }
   50% {
-    content: "|"
+    content: "..."
   }
   75% {
-    content: "/"
+    content: ".."
   }
   100% {
-    content: "-"
+    content: "."
   }
 `;
 
