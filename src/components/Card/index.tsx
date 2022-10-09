@@ -1,13 +1,6 @@
-import React, {
-  FC,
-  ReactElement,
-  useRef,
-  useEffect,
-  MouseEventHandler,
-} from "react";
-import { useSpring, animated, to } from "@react-spring/web";
-import { useGesture, useDrag } from "react-use-gesture";
-import { Container, CardWrapper } from "./styledComponents";
+import { FC, ReactElement, useEffect, MouseEventHandler } from "react";
+import { useSpring, a, to } from "@react-spring/web";
+import { useGesture } from "@use-gesture/react";
 import { calcX, calcY } from "../../assets/css/utilities/functions";
 
 interface PropTypes {
@@ -39,11 +32,6 @@ export const Card: FC<PropTypes> = ({
     };
   }, []);
 
-  //   const bind = useDrag((state) => {
-
-  //   })
-
-  const domTarget = useRef(null);
   const [{ x, y, rotateX, rotateY, rotateZ, zoom, scale }, api] = useSpring(
     () =>
       ({
@@ -58,37 +46,35 @@ export const Card: FC<PropTypes> = ({
       } as any)
   );
 
-  useGesture(
-    {
-      onDrag: ({ active, offset: [x, y] }: any) =>
-        draggable
-          ? api({
-              x,
-              y,
-              rotateX: 0,
-              rotateY: 0,
-              scale: 1.05,
-            })
-          : api({
-              scale: 1,
-            }),
-      onPinch: ({ offset: [d, a] }: any) => api({ zoom: d / 200, rotateZ: a }),
-      onMove: ({ xy: [px, py], dragging }: any) =>
-        !dragging &&
-        api({
-          rotateX: calcX(py, y.get()),
-          rotateY: calcY(px, x.get()),
-          scale: scaleIndex,
-        }),
-      onHover: ({ hovering }: any) =>
-        !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
-    },
-    { domTarget, eventOptions: { passive: false } }
-  );
+  const bind = useGesture({
+    onDrag: ({ active, offset: [x, y] }: any) =>
+      draggable
+        ? api({
+            x,
+            y,
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1.05,
+          })
+        : api({
+            scale: 1,
+          }),
+    onPinch: ({ offset: [d, a] }: any) => api({ zoom: d / 200, rotateZ: a }),
+    onMove: ({ xy: [px, py], dragging }: any) =>
+      !dragging &&
+      api({
+        rotateX: calcX(py, y.get()),
+        rotateY: calcY(px, x.get()),
+        scale: scaleIndex,
+      }),
+    onHover: ({ hovering }: any) =>
+      !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
+  });
+
   return (
-    <animated.div
+    <a.div
       onClick={onClick}
-      ref={domTarget}
+      {...bind()}
       style={
         parallax
           ? {
@@ -104,6 +90,6 @@ export const Card: FC<PropTypes> = ({
       }
     >
       {children}
-    </animated.div>
+    </a.div>
   );
 };
