@@ -8,7 +8,7 @@ import { CommandLine } from "../CommandLine";
 export const Main: FC = () => {
   return (
     <>
-      <Background />
+      {/* <Background /> */}
       <CommandLine />
       {/* <MenuSelection /> */}
     </>
