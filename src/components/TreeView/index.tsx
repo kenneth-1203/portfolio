@@ -1,15 +1,19 @@
-import React, { FC, useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useSpring, a } from "@react-spring/web";
 import useMeasure from "react-use-measure";
 import { motion } from "framer-motion";
 import * as Icons from "./icons";
 import { Container, Title, Frame, Content, toggle } from "./styledComponents";
 import { Card } from "../Card";
-import { About } from "../Sections/About";
+import { About } from "../../sections/About";
+import { Experiences } from "../../sections/Experiences";
+import { Skills } from "../../sections/Skills";
+import { Projects } from "../../sections/Projects";
+import { References } from "../../sections/References";
 
 interface SectionsProps {
   name: string;
-  Component: FC;
+  Component: React.FC;
 }
 
 function usePrevious<T>(value: T) {
@@ -25,19 +29,19 @@ const sections: Array<SectionsProps> = [
   },
   {
     name: "Experiences",
-    Component: () => <div></div>,
+    Component: () => <Experiences />,
   },
   {
     name: "Skills",
-    Component: () => <div></div>,
+    Component: () => <Skills />,
   },
   {
     name: "Projects",
-    Component: () => <div></div>,
+    Component: () => <Projects />,
   },
   {
     name: "References",
-    Component: () => <div></div>,
+    Component: () => <References />,
   },
 ];
 
@@ -63,7 +67,7 @@ const Tree = React.memo<
   });
 
   // @ts-ignore
-  const Icon: FC<IntrinsicAttributes> =
+  const Icon: React.FC<IntrinsicAttributes> =
     Icons[`${children ? (isOpen ? "Minus" : "Plus") : "Close"}SquareO`];
 
   return (
@@ -87,8 +91,7 @@ const Tree = React.memo<
   );
 });
 
-// @ts-ignore
-export const TreeView: FC = () => {
+export const TreeView: React.FC = () => {
   return (
     <motion.div
       animate={{

@@ -1,46 +1,22 @@
-import { FC, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import {
+  Container,
+  InnerContainer,
   Navbar,
   NavbarName,
   NavbarItem,
-  Container,
-  InnerContainer,
-  Contents,
   Wrapper,
-  Blinker,
-  TypingText,
-  LoadingText,
+  Contents,
 } from "./styledComponents";
-import { TreeView } from "../TreeView";
 import { Card } from "../Card";
 
-interface Code {
-  code: string;
-  delay: number;
-}
-
-const codeSnippets: Array<Code> = [
-  {
-    delay: 1,
-    code: "Hello there,",
-  },
-  {
-    delay: 1,
-    code: "my name is Kenneth Kho.",
-  },
-  {
-    delay: 1,
-    code: "I'm a Software Engineer.",
-  },
-];
-
-export const CommandLine: FC = () => {
-  const [line, setLine] = useState<number>(3);
-
+export const CommandLine: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <Container>
-      <Card parallax layer={1}>
+      <Card parallax>
         <motion.div
           animate={{
             y: [100, 0],
@@ -53,33 +29,13 @@ export const CommandLine: FC = () => {
           }}
         >
           <InnerContainer>
-            <Navbar
-            // onMouseOver={() => setHovering(true)}
-            // onMouseLeave={() => setHovering(false)}
-            >
+            <Navbar>
               <NavbarName>portfolio</NavbarName>
               <NavbarItem>✖</NavbarItem>
             </Navbar>
             <Wrapper>
-              <Card parallax layer={2}>
-                <Contents>
-                  {codeSnippets.map((snippet, i) => {
-                    return (
-                      <Card parallax layer={2} onClick={() => setLine(i + 1)}>
-                        <TypingText
-                          key={i}
-                          delay={snippet.delay + i / 2}
-                          line={line}
-                        >
-                          {snippet.code}
-                        </TypingText>
-                      </Card>
-                    );
-                  })}
-                  <Blinker />
-                  <LoadingText />
-                  <TreeView />
-                </Contents>
+              <Card>
+                <Contents>{children}</Contents>
               </Card>
             </Wrapper>
           </InnerContainer>

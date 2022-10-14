@@ -2,23 +2,13 @@ import styled from "styled-components";
 import { colors } from "../../assets/css/utilities/colors";
 import { transparency } from "../../assets/css/utilities/functions";
 import {
-  ExpandAnim,
   Blink,
   Typewriter,
   Loading,
 } from "../../assets/css/utilities/animations";
-import {
-  mobile,
-  tabletPortrait,
-  tabletLandscape,
-} from "../../assets/css/utilities/sizes";
+import { mobile, tabletPortrait } from "../../assets/css/utilities/sizes";
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 60px);
-
   ${tabletPortrait} {
     display: block;
     margin: auto 0;
@@ -27,7 +17,7 @@ export const Container = styled.div`
 
 export const InnerContainer = styled.div`
   transition: 1s;
-  width: 60rem;
+  width: 100%;
 
   ${tabletPortrait} {
     width: 100%;
@@ -40,20 +30,11 @@ export const Wrapper = styled.div`
   backdrop-filter: blur(3px);
   padding: 2rem;
   transition: border-color 0.2s;
-  background: linear-gradient(150deg, rgba(33,9,65, .2) 50%, rgba(70,59,120, .2) 100%);
-
-  animation: ${ExpandAnim("14rem", "284px")} 1s forwards;
-  animation-delay: 4s;
-
-  ${tabletLandscape} {
-    animation: ${ExpandAnim("14rem", "270px")} 1s forwards;
-    animation-delay: 4s;
-  }
-
-  ${mobile} {
-    animation: ${ExpandAnim("14rem", "270px")} 1s forwards;
-    animation-delay: 4s;
-  }
+  background: linear-gradient(
+    150deg,
+    rgba(33, 9, 65, 0.2) 50%,
+    rgba(70, 59, 120, 0.2) 100%
+  );
 `;
 
 export const Navbar = styled.div`
@@ -102,7 +83,6 @@ export const TypingText = styled.p<{
 }>`
   font-size: 1.4rem;
   height: 1.4rem;
-  margin: 0;
   margin-bottom: 1rem;
   overflow: hidden;
   word-break: break-all;
@@ -110,7 +90,7 @@ export const TypingText = styled.p<{
   transition: 1s;
   user-select: none;
 
-  &:nth-child(${({ line }) => line ?? 3}) > p {
+  &:nth-child(${({ line }) => line ?? 3}) {
     &::after {
       content: "|";
       font-weight: 800;
@@ -139,6 +119,4 @@ export const LoadingText = styled.p`
   }
 `;
 
-export const Contents = styled.div`
-
-`;
+export const Contents = styled.div``;
