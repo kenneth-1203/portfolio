@@ -997,7 +997,7 @@ const StackLogo = styled.div<{ $accent: string; $ghost?: boolean }>`
   box-shadow:
     inset 0 0 0 1px rgba(var(--card-accent), ${({ $ghost }) => ($ghost ? '0.07' : '0.12')}),
     inset 0 -18px 40px rgba(0,0,0,0.18);
-  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, filter 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, filter 180ms ease, opacity 180ms ease;
 
   &:hover {
     border-color: rgba(var(--card-accent), 0.82);
@@ -1006,7 +1006,6 @@ const StackLogo = styled.div<{ $accent: string; $ghost?: boolean }>`
       rgba(255,255,255,0.075);
     opacity: 1;
     filter: saturate(1);
-    transform: translateY(-2px);
   }
 
   img {
